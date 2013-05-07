@@ -1,5 +1,5 @@
 from bottle import run, route, jinja2_view as view, request, default_app
-from bottle import post, get
+from bottle import post, get, static_file, abort
 from database import *
 
 session = Session()
@@ -7,48 +7,50 @@ session = Session()
 @route('/')
 @view('home.html')
 def home():
-    return {}
+    return {'fora': session.query(Forum).all(), 
+            'polls': session.query(Poll).all(),
+    }
 
 @get('/forum/<forumname>')
 @view('forum.html')
 def forum(forumname):
-    forum = session.query(Forum).filter_by(title=forumname).first()
+    forum = session.query(Forum).filter_by(url=forumname).first()
     if forum:
         return {'forum':forum}
     else:
-        return {'error': 'Forum not found.'}
+        abort(404, 'Forum not found.')
 
 @post('/forum/<forumname>')
 def forum_post(forumname):
-    forum = session.query(Forum).filter_by(title=forumname).first()
+    forum = session.query(Forum).filter_by(url=forumname).first()
     if forum:
         name = request.forms.get('name')
-        reaction = request.forms.get('reaction')
-        new_reaction = Reaction(reaction, name)
+        content = request.forms.get('reaction')
+        new_reaction = Reaction(content, name, forum)
         session.add(new_reaction)
         session.commit()
     else:
-        return {'error':'Forum not found.'}
+        abort(404, 'Forum not found.')
 
 @get('/poll/<pollname>')
 @view('poll.html')
 def poll(pollname):
-    poll = session.query(Poll).filter_by(title=pollname).first()
+    poll = session.query(Poll).filter_by(url=pollname).first()
     if forum:
         return {'poll': poll}
     else:
-        return {'error': 'Forum not found.'}
+        abort(404, 'Poll not found.')
 
 @post('/poll/<pollname>')
 def poll_post(pollname):
-    poll = session.query(Poll).filter_by(name=pollname).first()
+    poll = session.query(Poll).filter_by(url=pollname).first()
     if poll:
         vote = request.forms.get('reaction')
         new_reaction = Reaction(reaction, name)
         session.add(new_reaction)
         session.commit()
     else:
-        return {'error':'Poll not found.'}
+        abort(404, 'Poll not found.')
         
 @route('/static/<filepath:path>')
 def server_static(filepath):

@@ -29,7 +29,7 @@
         </h3>
     </div>
     <div data-role="content">
-        <form action="/forum/{{ forum.url }}" method='POST'>
+        <form id='reactionForm'>
             <div data-role="fieldcontain">
                 <label for="textarea1">
                     Reactie:
@@ -40,12 +40,12 @@
                 <label for="textinput2">
                     Naam:
                 </label>
-                <input name="Name" id="textinput2" placeholder="" value="anoniem" type="text">
+                <input name="name" id="textinput2" placeholder="" value="anoniem" type="text">
             </div>
             <input type="submit" value="submit">
         </form>
         <div>
-            {% if reaction %}
+            {% if forum.reactions %}
             {% for reaction in forum.reactions %}
             <p> {{ reaction.content }} - <i>{{ reaction.name }}</i></p>
             {% endfor %}

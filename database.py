@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
+from datetime import datetime
 
 Base = declarative_base()
 engine = create_engine('sqlite:///jeugddienst.db')
@@ -10,6 +11,7 @@ class Poll(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
+    url = Column(String)
     option1 = Column(String)
     option2 = Column(String)
     option3 = Column(String)
@@ -29,6 +31,7 @@ class Forum(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
+    url = Column(String)
 
 class Reaction(Base):
     __tablename__ = 'reactions'
@@ -37,9 +40,15 @@ class Reaction(Base):
     content = Column(String)
     name = Column(String)
     forum_id = Column(Integer, ForeignKey('fora.id'))
-    forum = relationship("Fora", backref=backref('reactions', order_by=id))
+    forum = relationship("Forum", backref=backref('reactions', order_by=id))
     post_date = Column(DateTime)
+    
+    def __init__(self, content, name, forum):
+        self.content = content
+        self.name = name
+        self.forum = forum
+        self.post_date = datetime.today()
 
 Base.metadata.create_all(engine)
 
-Session = sessionmaker()
+Session = sessionmaker(bind=engine)
