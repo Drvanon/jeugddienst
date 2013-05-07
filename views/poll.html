@@ -24,7 +24,7 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
-            Poll Titel
+            {{ poll.title }}
         </h3>
     </div>
     <div data-role="content">
@@ -33,15 +33,19 @@
                 <fieldset data-role="controlgroup" data-type="vertical">
                     <input id="radio1" name="Poll" value="1" type="radio">
                     <label for="radio1">
-                        Optie 1
+                        {{ poll.option1 }}
                     </label>
                     <input id="radio2" name="Poll" value="2" type="radio">
                     <label for="radio2">
-                        Optie 2
+                        {{ poll.option2 }}
                     </label>
                     <input id="radio3" name="Poll" value="3" type="radio">
                     <label for="radio3">
-                        Optie 3
+                        {{ poll.option3 if poll.option3 }}
+                    </label>
+                    <input id="radio3" name="Poll" value="3" type="radio">
+                    <label for="radio3">
+                        {{ poll.option4 if poll.option4 }}
                     </label>
                 </fieldset>
             </div>

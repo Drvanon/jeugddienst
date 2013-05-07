@@ -14,15 +14,13 @@ def home():
 def forum(forumname):
     forum = session.query(Forum).filter_by(title=forumname).first()
     if forum:
-        return {'title': forum.title,
-                'reactions': forum.reactions
-                }
+        return {'forum':forum}
     else:
         return {'error': 'Forum not found.'}
 
 @post('/forum/<forumname>')
 def forum_post(forumname):
-    forum = session.query(Forum).filter_by(name=forumname).first()
+    forum = session.query(Forum).filter_by(title=forumname).first()
     if forum:
         name = request.forms.get('name')
         reaction = request.forms.get('reaction')
@@ -37,12 +35,7 @@ def forum_post(forumname):
 def poll(pollname):
     poll = session.query(Poll).filter_by(title=pollname).first()
     if forum:
-        return {'title': poll.title,
-                'option1': poll.option1,
-                'option2': poll.option2,
-                'option3': poll.option3,
-                'option4': poll.option4,
-                }
+        return {'poll': poll}
     else:
         return {'error': 'Forum not found.'}
 
@@ -55,7 +48,11 @@ def poll_post(pollname):
         session.add(new_reaction)
         session.commit()
     else:
-        return {'error':'Forum not found.'}
+        return {'error':'Poll not found.'}
+        
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='./static')
 
 if __name___ == '__main__': run(debug=True)
 else: application = default_app()

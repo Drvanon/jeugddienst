@@ -24,7 +24,7 @@
 <div data-role="page" id="page1">
     <div data-theme="a" data-role="header">
         <h3>
-            Forum Titel
+            {{ forum.title }}
         </h3>
     </div>
     <div data-role="content">
@@ -39,9 +39,18 @@
                 <label for="textinput2">
                     Naam:
                 </label>
-                <input name="Name" id="textinput2" placeholder="" value="anoniem" type="text">
+                <input name="Name" id="textinput2" placeholder="anoniem" value="" type="text">
             </div>
         </form>
+        <div>
+            {% if reaction %}
+            {% for reaction in forum.reactions %}
+            <p> {{ reaction.content }} - <i>{{ reaction.name }}</i></p>
+            {% endfor %}
+            {% else %}
+            <p>Er zijn nog geen reacties geplaatst.</p>
+            {% endif %}
+        </div>
     </div>
 </div>
 </body>
