@@ -1,5 +1,5 @@
 from bottle import run, route, jinja2_view as view, request, default_app
-from bottel import post, get
+from bottle import post, get
 from database import *
 
 session = Session()
@@ -54,5 +54,5 @@ def poll_post(pollname):
 def server_static(filepath):
     return static_file(filepath, root='./static')
 
-if __name___ == '__main__': run(debug=True)
+if __name__ == '__main__': run(debug=True)
 else: application = default_app()
