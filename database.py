@@ -9,7 +9,7 @@ class Poll(Base):
     __tablename__ = 'polls'
     
     id = Column(Integer, primary_key=True)
-    content = Column(String)
+    title = Column(String)
     
 class Vote(Base):
     __tablename__ = 'votes'
@@ -24,7 +24,7 @@ class Forum(Base):
     __tablename__ = 'fora'
 
     id = Column(Integer, primary_key=True)
-    content = Column(String)
+    title = Column(String)
     
 class Reaction(Base):
     __tablename__ = 'reactions'
