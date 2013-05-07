@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
 
 Base = declarative_base()
-engine = create_engine()
+engine = create_engine('sqlite:///jeugddienst.db')
 
 class Poll(Base):
     __tablename__ = 'polls'
