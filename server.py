@@ -22,7 +22,8 @@ def forum(forumname):
 
 @post('/forum/<forumname>')
 def forum_post(forumname):
-    if forumname in session.query(Forum).all():
+    forum = session.query(Forum).filter_by(name=forumname).first()
+    if forum:
         name = request.forms.get('name')
         reaction = request.forms.get('reaction')
         new_reaction = Reaction(reaction, name)
@@ -44,6 +45,17 @@ def poll(pollname):
                 }
     else:
         return {'error': 'Forum not found.'}
+
+@post('/poll/<pollname>')
+def poll_post(pollname):
+    poll = session.query(Poll).filter_by(name=pollname).first()
+    if poll:
+        vote = request.forms.get('reaction')
+        new_reaction = Reaction(reaction, name)
+        session.add(new_reaction)
+        session.commit()
+    else:
+        return {'error':'Forum not found.'}
 
 if __name___ == '__main__': run(debug=True)
 else: application = default_app()
