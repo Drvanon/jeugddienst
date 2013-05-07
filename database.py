@@ -17,7 +17,7 @@ class Vote(Base):
     id = Column(Integer, primary_key=True)
     option = Column(Integer)
     poll_id = Column(Integer, ForeignKey('polls.id'))
-    poll = relationship("Poll", backref=backref('polls', order_by=id)
+    poll = relationship("Poll", backref=backref('polls', order_by=id))
     post_date = Column(DateTime)
     
 class Forum(Base):
@@ -33,7 +33,7 @@ class Reaction(Base):
     content = Column(String)
     name = Column(String)
     forum_id = Column(Integer, ForeignKey('fora.id'))
-    forum = relationship("Fora", backref=backref('reactions', order_by=id)
+    forum = relationship("Fora", backref=backref('reactions', order_by=id))
     post_date = Column(DateTime)
     
 Base.metadata.create_all(engine)
