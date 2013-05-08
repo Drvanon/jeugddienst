@@ -1,5 +1,4 @@
 $(document).on( "pageinit", ".forumpage", function() {
-    alert('shits happening');
     $(".reactionForm").on('submit', function (e) {
         e.preventDefault();
         var form_content;
