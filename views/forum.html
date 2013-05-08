@@ -21,15 +21,15 @@
    
 </head>
 <body>
-<!-- Home -->
-<div data-role="page" id="page1">
+<!-- forum -->
+<div data-role="page" class="forumpage" id="{{ forum.title }}-page">
     <div data-theme="a" data-role="header">
         <h3>
             {{ forum.title }}
         </h3>
     </div>
     <div data-role="content">
-        <form id='reactionForm'>
+        <form class='reactionForm'>
             <div data-role="fieldcontain">
                 <label for="textarea1">
                     Reactie:
