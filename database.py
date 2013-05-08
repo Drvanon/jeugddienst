@@ -25,6 +25,11 @@ class Vote(Base):
     poll_id = Column(Integer, ForeignKey('polls.id'))
     poll = relationship("Poll", backref=backref('polls', order_by=id))
     post_date = Column(DateTime)
+    
+    def __init__(self, option, poll):
+        self.option = option
+        self.poll = poll
+        self.post_date = datetime.today()
 
 class Forum(Base):
     __tablename__ = 'fora'

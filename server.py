@@ -45,9 +45,9 @@ def poll(pollname):
 def poll_post(pollname):
     poll = session.query(Poll).filter_by(url=pollname).first()
     if poll:
-        vote = request.forms.get('reaction')
-        new_reaction = Reaction(reaction, name)
-        session.add(new_reaction)
+        vote = request.forms.get('Poll')
+        new_vote= Vote(vote, poll)
+        session.add(new_vote)
         session.commit()
     else:
         abort(404, 'Poll not found.')
