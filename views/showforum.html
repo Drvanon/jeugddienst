@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+        <link rel='stylesheet' href='/static/showforum.css'>
+        <script src='/static/showforum.js'></script>
+    </head>
+    <body>
+    <div id='header'>
+        <h1>{{ forum.title }}</h1>
+    </div>
+    {% for reaction in forum.reactions %}
+        <div class='reactioncontainer'>
+            <p class='reactioncontent'>{{ reaction.content }}</p>
+            <p class='reactionname'>{{ reaction.name }}</p>
+        </div>
+    {% endfor %}
+    </body>
+</html>

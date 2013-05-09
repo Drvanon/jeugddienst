@@ -20,6 +20,15 @@ def forum(forumname):
     else:
         abort(404, 'Forum not found.')
 
+@get('/forum/<forumname>/show')
+@view('showforum.html')
+def show(forumname):
+    forum = session.query(Forum).filter_by(url=forumname).first()
+    if forum:
+        return {'forum': forum}
+    else:
+        abort(404, 'Forum not found.')
+
 @post('/forum/<forumname>')
 def forum_post(forumname):
     forum = session.query(Forum).filter_by(url=forumname).first()
@@ -56,5 +65,5 @@ def poll_post(pollname):
 def server_static(filepath):
     return static_file(filepath, root='./static')
 
-if __name__ == '__main__': run(debug=True)
+if __name__ == '__main__': run(reloader=True, debug=True)
 else: application = default_app()

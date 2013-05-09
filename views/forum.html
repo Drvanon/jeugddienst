@@ -29,12 +29,16 @@
         </h3>
     </div>
     <div data-role="content">
+        {% if forum.extra_questions %}
+        <p>Vragen om je op weg te helpen: {{ forum.extra_questions }}</p>
+        {% endif %}
         <form class='reactionForm'>
             <div data-role="fieldcontain">
-                <label for="textarea1">
+                <label for="reactionField">
                     Reactie:
                 </label>
-                <textarea name="reaction" id="textarea1" placeholder=""></textarea>
+                <textarea name="reaction" id="reactionField" placeholder=""></textarea>
+                <span id='reactionSpan'></span>
             </div>
             <div data-role="fieldcontain">
                 <label for="textinput2">

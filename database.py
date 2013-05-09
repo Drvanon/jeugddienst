@@ -37,6 +37,7 @@ class Forum(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     url = Column(String)
+    extra_questions = Column(String)
 
 class Reaction(Base):
     __tablename__ = 'reactions'
