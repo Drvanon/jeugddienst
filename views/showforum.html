@@ -5,14 +5,16 @@
         <script src='/static/showforum.js'></script>
     </head>
     <body>
-    <div id='header'>
-        <h1>{{ forum.title }}</h1>
-    </div>
-    {% for reaction in forum.reactions %}
-        <div class='reactioncontainer'>
-            <p class='reactioncontent'>{{ reaction.content }}</p>
-            <p class='reactionname'>{{ reaction.name }}</p>
+        <div id='header'>
+            <h1>{{ forum.title }}</h1>
         </div>
-    {% endfor %}
+        <div id='containercontainer'>
+            {% for reaction in forum.reactions %}
+            <div class='reactioncontainer'>
+                <p class='reactioncontent'>{{ reaction.content }}</p>
+                <p class='reactionname'>{{ reaction.name }}</p>
+            </div>
+            {% endfor %}
+        </div>
     </body>
 </html>

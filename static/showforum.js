@@ -1,24 +1,17 @@
-var t = 0;
-
-function moveit(dclass, xcenter, ycenter) {
-    t += 0.05;
-    
-    var r = 100;
-    var newLeft = Math.floor(xcenter + (r * Math.cos(t)));
-    var newTop = Math.floor(ycenter + (r * Math.sin(t)));
-    $(dclass).each(function () {
-        $(this).animate({
-            top: newTop,
-            left: newLeft,
-        }, 1, function() {
-            moveit(dclass, xcenter, ycenter);
-        });
-    });
-}
-
-$(document).ready(function () {
-    var xcenter = $(window).width();
-    var ycenter = $(window).height();
-    
-    moveit('.reactioncontainer', xcenter, ycenter);
+$(document).ready(function() {
+    var $reacon = $('.reactioncontainer');
+    var counter = 0;
+        
+    setInterval(function () {
+        console.log('scrolling');
+        var elem = $reacon[counter];
+        var pos = $(elem).position()
+        scrollTo(0, pos.top);
+        if (counter >= $reacon.length - 1) {
+            counter = 0;
+        } else {
+            counter++;
+        }
+    }, 1000
+    );
 });

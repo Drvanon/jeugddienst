@@ -1,7 +1,42 @@
-.reactioncontainer {
-    width: 75px;
+@import url(http://fonts.googleapis.com/css?family=Marck+Script);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700);
+@import url(http://fonts.googleapis.com/css?family=Quando);
+
+
+body {
+    background-color: #E3E3E3;
 }
-.reactioncontainer  p{
-    margin-top: 2px;
-    margin-bottom: 2px;
+
+#containercontainer {
+    width: 100%;
+    text-align: center;
+}
+
+.reactioncontainer {
+    width: 20%;    
+    margin: 0 auto;
+    display: inline-block;  
+    background-color: #454545;
+    border-radius: 15px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 20px;
+    color: #FBFBFB;
+    font-family: Quando;
+}
+
+.reactionname {
+    font-family: Marck Script;
+    text-align: right;
+    color: #AEABAB;
+    margin-bottom: 1px;
+}
+.reactioncontent {
+    margin-top: 1px;
+    text-align: center;
+}
+#header{
+    font-family: Roboto Slab;
+    text-align: center;
 }
