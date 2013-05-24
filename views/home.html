@@ -35,9 +35,6 @@
     </div>
     <div data-role="content">
         <ul data-role="listview" data-divider-theme="b" data-inset="true">
-            <li data-role="list-divider" role="heading">
-                Fora
-            </li>
             {% for forum in fora %}
             <li data-theme="c">
                 <a href="/forum/{{ forum.url }}" data-transition="slide">
@@ -45,9 +42,6 @@
                 </a>
             </li>
             {% endfor %}
-            <li data-role="list-divider" role="heading">
-                Polls
-            </li>
             {% for poll in polls %}
             <li data-theme="c">
                 <a href="/poll/{{ poll.url }}" data-transition="slide">
