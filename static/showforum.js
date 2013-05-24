@@ -6,7 +6,6 @@ $(document).ready(function() {
         console.log('scrolling');
         var elem = $reacon[counter];
         var pos = $(elem).position()
-        scrollTo(0, pos.top);
         if (counter >= $reacon.length - 1) {
             counter = 0;
         } else {

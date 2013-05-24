@@ -2,26 +2,23 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700);
 @import url(http://fonts.googleapis.com/css?family=Quando);
 
-
 body {
     background-color: #E3E3E3;
 }
-
 #containercontainer {
-    width: 100%;
-    text-align: center;
+    display: -webkit-flex;
+    max-width: 100%;
 }
 
 .reactioncontainer {
+    -webkit-flex: 1 1 auto;
     width: 20%;    
-    margin: 0 auto;
-    display: inline-block;  
+    margin: 0px auto 20px 20px;
     background-color: #454545;
     border-radius: 15px;
     padding: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: 20px;
     color: #FBFBFB;
     font-family: Quando;
 }
