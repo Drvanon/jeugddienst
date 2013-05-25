@@ -28,7 +28,7 @@
 <body>
 <!-- Home -->
 <div data-role="page" id="homepage">
-    <div data-theme="a" data-role="header">
+    <div data-theme="b" data-role="header">
         <h3>
             De verbinding Jeugddienst
         </h3>
@@ -43,7 +43,7 @@
             </li>
             {% endfor %}
             {% for poll in polls %}
-            <li data-theme="c">
+            <li data-theme="b">
                 <a href="/poll/{{ poll.url }}" data-transition="slide">
                     {{ poll.title }}
                 </a>
